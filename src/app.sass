@@ -1,0 +1,25 @@
+@import './styles/_variables.sass'
+
+body
+  margin: 0
+  background-color: $app-bg
+  font-family: 'Inter', sans-serif
+
+.app
+  display: flex
+  min-height: 100vh
+
+.content
+  flex: 1
+  display: flex
+  flex-direction: column
+  background-color: $app-bg
+
+.main
+  flex: 1
+  padding: 20px
+  background-color: $app-bg
+
+@media (max-width: 768px)
+  .app
+    flex-direction: column

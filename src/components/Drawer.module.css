@@ -1,0 +1,56 @@
+.drawer {
+  width: 220px;
+  background-color: #3C3B53;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+  transition: 0.3s ease;
+}
+.drawer.open {
+  transform: translateX(0);
+}
+.drawer.closed {
+  transform: translateX(-220px);
+}
+@media (max-width: 768px) {
+  .drawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 1000;
+    transform: translateX(-220px);
+  }
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 24px;
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  transition: 0.2s ease;
+  font-size: 14px;
+}
+.item:hover {
+  background-color: #3C3B54;
+  color: white;
+}
+
+.active {
+  background-color: #3C3B54;
+  color: white;
+}
+
+/*# sourceMappingURL=Drawer.module.css.map */

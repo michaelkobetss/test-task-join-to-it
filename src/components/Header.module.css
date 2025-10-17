@@ -1,0 +1,79 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  background-color: #fff;
+  border-bottom: 1px solid #e5e5e5;
+}
+.header.hideSearch .search {
+  display: none;
+}
+
+.mobileHeader {
+  display: none;
+}
+@media (max-width: 768px) {
+  .mobileHeader {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .mobileHeader button {
+    background: none;
+    border: none;
+    color: #333;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+  .mobileHeader .logo {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+  }
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #aaa;
+  flex: 1;
+}
+.search input {
+  border: none;
+  outline: none;
+  font-size: 14px;
+  color: #333;
+  width: 100%;
+  background: transparent;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: #333;
+  font-size: 16px;
+  flex: 0;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.profile img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+.profile span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/*# sourceMappingURL=Header.module.css.map */

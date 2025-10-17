@@ -1,0 +1,73 @@
+@import '../styles/_variables'
+
+.header
+  display: flex
+  align-items: center
+  justify-content: space-between
+  padding: 12px 24px
+  background-color: $header-bg
+  border-bottom: 1px solid #e5e5e5
+
+  &.hideSearch
+    .search
+      display: none
+
+.mobileHeader
+  display: none
+
+  @media (max-width: 768px)
+    display: flex
+    align-items: center
+    gap: 12px
+
+    button
+      background: none
+      border: none
+      color: $text-dark
+      font-size: 1.2rem
+      cursor: pointer
+
+    .logo
+      font-size: 1rem
+      font-weight: bold
+      color: $text-dark
+
+.search
+  display: flex
+  align-items: center
+  gap: 10px
+  color: $text-light
+  flex: 1
+
+  input
+    border: none
+    outline: none
+    font-size: 14px
+    color: $text-dark
+    width: 100%
+    background: transparent
+
+.actions
+  display: flex
+  align-items: center
+  gap: 16px
+  color: $text-dark
+  font-size: 16px
+  flex: 0
+
+.profile
+  display: flex
+  align-items: center
+  gap: 8px
+
+  img
+    width: 32px
+    height: 32px
+    border-radius: 50%
+
+  span
+    display: flex
+    align-items: center
+    gap: 4px
+    font-size: 14px
+    font-weight: 500
