@@ -1,5 +1,4 @@
-
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
@@ -49,17 +48,22 @@ function CalendarView() {
 
     const handleDateSelect = (info) => {
         const now = new Date();
+
+        const clickedDate = info.date || info.start || now;
+
+        const datePart = toLocalDateString(clickedDate);
+        const startTime = toLocalTimeString(clickedDate);
         const currentTime = toLocalTimeString(now);
-        const startObj = info.start instanceof Date ? info.start : new Date(info.start);
-        const datePart = toLocalDateString(startObj);
-        const startTime = toLocalTimeString(startObj);
+
         const isMonthView = info.view?.type?.startsWith("dayGrid");
         const useClickedTime = !isMonthView && !info.allDay;
+
         setCreateInfo({
             top: info.jsEvent?.clientY ?? 0,
             left: info.jsEvent?.clientX ?? 0,
-            start: info.startStr,
+            start: clickedDate,
         });
+
         setEventDate(datePart);
         setEventName("");
         setEventTime(useClickedTime ? startTime : currentTime);
@@ -67,6 +71,7 @@ function CalendarView() {
         setEventColor("#1976d2");
         setIsCreateOpen(true);
     };
+
 
     const handleSaveEvent = () => {
         if (eventName.trim().length > 0) {
@@ -76,7 +81,7 @@ function CalendarView() {
                 title: eventName.slice(0, 30),
                 start,
                 end: start,
-                extendedProps: { notes: eventNotes, color: eventColor },
+                extendedProps: {notes: eventNotes, color: eventColor},
                 backgroundColor: eventColor,
             };
             setEvents((prev) => [...prev, newEvent]);
@@ -111,7 +116,7 @@ function CalendarView() {
                     start: updated.start,
                     end: updated.end,
                     backgroundColor: updated.backgroundColor,
-                    extendedProps: { ...(e.extendedProps || {}), ...(updated.extendedProps || {}) },
+                    extendedProps: {...(e.extendedProps || {}), ...(updated.extendedProps || {})},
                 };
             })
         );
@@ -134,7 +139,7 @@ function CalendarView() {
                     start: info.event.startStr,
                     end: info.event.endStr || info.event.startStr,
                     backgroundColor: info.event.backgroundColor || e.backgroundColor,
-                    extendedProps: { ...(e.extendedProps || {}), ...(info.event.extendedProps || {}) },
+                    extendedProps: {...(e.extendedProps || {}), ...(info.event.extendedProps || {})},
                 };
             })
         );
@@ -148,7 +153,7 @@ function CalendarView() {
                     ...e,
                     start: info.event.startStr,
                     end: info.event.endStr || info.event.startStr,
-                    extendedProps: { ...(e.extendedProps || {}), ...(info.event.extendedProps || {}) },
+                    extendedProps: {...(e.extendedProps || {}), ...(info.event.extendedProps || {})},
                 };
             })
         );
@@ -170,8 +175,17 @@ function CalendarView() {
         const bgColor = eventInfo.event.backgroundColor || eventInfo.event.extendedProps?.color || "#1976d2";
         const textColor = isLightColor(bgColor) ? "#000000" : "#FFFFFF";
         return (
-            <div style={{ backgroundColor: bgColor, color: textColor, padding: "4px 8px", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", minHeight: 24 }}>
-                <div style={{ pointerEvents: "none" }}>
+            <div style={{
+                backgroundColor: bgColor,
+                color: textColor,
+                padding: "4px 8px",
+                borderRadius: 8,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                minHeight: 24
+            }}>
+                <div style={{pointerEvents: "none"}}>
                     {eventInfo.event.title}
                 </div>
             </div>
@@ -200,6 +214,8 @@ function CalendarView() {
                 dayMaxEvents
                 weekends
                 select={handleDateSelect}
+                dateClick={handleDateSelect}
+                selectLongPressDelay={0}
                 eventClick={handleEventClick}
                 eventDrop={handleEventDrop}
                 eventResize={handleEventResize}
@@ -207,6 +223,7 @@ function CalendarView() {
                 height={calendarHeight}
                 eventContent={renderEventContent}
             />
+
 
             {isCreateOpen && (
                 <EventTooltip
