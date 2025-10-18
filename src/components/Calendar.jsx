@@ -1,75 +1,100 @@
-"use client"
-import React, { useState } from "react"
-import FullCalendar from "@fullcalendar/react"
-import dayGridPlugin from "@fullcalendar/daygrid"
-import timeGridPlugin from "@fullcalendar/timegrid"
-import interactionPlugin from "@fullcalendar/interaction"
-import styles from "./Calendar.module.sass"
+import React, { useState, useEffect } from "react";
+import FullCalendar from "@fullcalendar/react";
+import dayGridPlugin from "@fullcalendar/daygrid";
+import timeGridPlugin from "@fullcalendar/timegrid";
+import interactionPlugin from "@fullcalendar/interaction";
+import styles from "./Calendar.module.sass";
+import EventModal from "./EvenModal.jsx";
 
 function CalendarView() {
-    const [events, setEvents] = useState([])
+    const [events, setEvents] = useState([]);
+    const [calendarHeight, setCalendarHeight] = useState("80vh");
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [modalInfo, setModalInfo] = useState({});
+    const [eventName, setEventName] = useState("");
+    const [eventColor, setEventColor] = useState("#1976d2");
 
     const handleDateSelect = (info) => {
-        const title = prompt("Enter event name (max 30 chars):")
-        if (title && title.trim().length > 0) {
-            const color = prompt("Enter color (e.g. #1976d2 or 'red')", "#1976d2")
+        setModalInfo(info);
+        setEventName("");
+        setEventColor("#1976d2");
+        setIsModalOpen(true);
+    };
+
+    const handleSaveEvent = () => {
+        if (eventName.trim().length > 0) {
             const newEvent = {
                 id: String(Date.now()),
-                title: title.slice(0, 30),
-                start: info.startStr,
-                end: info.endStr,
-                color: color || "#1976d2",
-            }
-            setEvents([...events, newEvent])
+                title: eventName.slice(0, 30),
+                start: modalInfo.startStr,
+                end: modalInfo.endStr,
+                color: eventColor || "#1976d2",
+            };
+            setEvents([...events, newEvent]);
         }
-        info.view.calendar.unselect()
-    }
+        setIsModalOpen(false);
+    };
 
     const handleEventClick = (info) => {
-        const choice = window.prompt(
-            "Edit title, or leave blank to delete this event:",
+        const title = window.prompt(
+            "Edit event title or leave blank to delete:",
             info.event.title
-        )
+        );
 
-        if (choice === "") {
-            info.event.remove()
-        } else if (choice && choice.trim()) {
-            const color = prompt("Change color (leave empty to keep current):")
-            info.event.setProp("title", choice.slice(0, 30))
-            if (color) info.event.setProp("backgroundColor", color)
+        if (title === "") {
+            info.event.remove();
+        } else if (title) {
+            const color = window.prompt("Change color (leave empty to keep current):");
+            info.event.setProp("title", title.slice(0, 30));
+            if (color) info.event.setProp("backgroundColor", color);
         }
-    }
+    };
 
-    const handleEventDrop = (info) => {
-        console.log("Event moved:", info.event.title)
-    }
+    const updateCalendarHeight = () => {
+        setCalendarHeight(window.innerWidth <= 768 ? "65vh" : "80vh");
+    };
+
+    useEffect(() => {
+        updateCalendarHeight();
+        window.addEventListener("resize", updateCalendarHeight);
+        return () => {
+            window.removeEventListener("resize", updateCalendarHeight);
+        };
+    }, []);
 
     return (
+        <div className={styles.container}>
+            <FullCalendar
+                plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+                headerToolbar={{
+                    left: "today prev,next",
+                    center: "title",
+                    right: "dayGridMonth,timeGridWeek,timeGridDay",
+                }}
+                initialView="dayGridMonth"
+                editable
+                selectable
+                selectMirror
+                dayMaxEvents
+                weekends
+                select={handleDateSelect}
+                eventClick={handleEventClick}
+                events={events}
+                height={calendarHeight}
+            />
 
-
-            <div className={styles.container}>
-                <FullCalendar
-                    plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-                    headerToolbar={{
-                        left: "today prev,next",
-                        center: "title",
-                        right: "dayGridMonth,timeGridWeek,timeGridDay,listWeek",
-                    }}
-                    initialView="dayGridMonth"
-                    editable
-                    selectable
-                    selectMirror
-                    dayMaxEvents
-                    weekends
-                    select={handleDateSelect}
-                    eventClick={handleEventClick}
-                    events={events}
-                    eventDrop={handleEventDrop}
-                    height="80vh"
+            {isModalOpen && (
+                <EventModal
+                    eventName={eventName}
+                    setEventName={setEventName}
+                    eventColor={eventColor}
+                    setEventColor={setEventColor}
+                    onSave={handleSaveEvent}
+                    onCancel={() => setIsModalOpen(false)}
                 />
-
+            )}
         </div>
-    )
+    );
 }
 
-export default CalendarView
+export default CalendarView;

@@ -31,6 +31,7 @@ export default function Drawer({ isOpen }) {
         <aside
             className={`${styles.drawer} ${isOpen ? styles.open : styles.closed}`}
         >
+            <div className={styles.logo}>IMPEKABLE</div>
             <ul className={styles.menu}>
                 {menuItems.map((item, i) => (
                     <li

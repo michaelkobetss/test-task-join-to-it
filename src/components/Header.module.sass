@@ -8,30 +8,6 @@
   background-color: $header-bg
   border-bottom: 1px solid #e5e5e5
 
-  &.hideSearch
-    .search
-      display: none
-
-.mobileHeader
-  display: none
-
-  @media (max-width: 768px)
-    display: flex
-    align-items: center
-    gap: 12px
-
-    button
-      background: none
-      border: none
-      color: $text-dark
-      font-size: 1.2rem
-      cursor: pointer
-
-    .logo
-      font-size: 1rem
-      font-weight: bold
-      color: $text-dark
-
 .search
   display: flex
   align-items: center
@@ -55,10 +31,14 @@
   font-size: 16px
   flex: 0
 
+  @media (max-width: 768px)
+    justify-content: flex-start
+
 .profile
   display: flex
   align-items: center
   gap: 8px
+  white-space: nowrap
 
   img
     width: 32px
@@ -71,3 +51,28 @@
     gap: 4px
     font-size: 14px
     font-weight: 500
+
+.menuButton
+  background: none
+  border: none
+  padding: 0
+  color: $text-dark
+  font-size: 1.8rem
+  cursor: pointer
+  display: flex
+  align-items: center
+  justify-content: center
+  height: 40px
+  width: 40px
+
+@media (max-width: 768px)
+  .header
+    justify-content: flex-start
+    gap: 24px
+
+  .actions
+    flex: 1
+    justify-content: flex-start
+
+  .menuButton
+    margin-left: auto

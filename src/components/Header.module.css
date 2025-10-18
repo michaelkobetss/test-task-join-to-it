@@ -6,32 +6,6 @@
   background-color: #fff;
   border-bottom: 1px solid #e5e5e5;
 }
-.header.hideSearch .search {
-  display: none;
-}
-
-.mobileHeader {
-  display: none;
-}
-@media (max-width: 768px) {
-  .mobileHeader {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .mobileHeader button {
-    background: none;
-    border: none;
-    color: #333;
-    font-size: 1.2rem;
-    cursor: pointer;
-  }
-  .mobileHeader .logo {
-    font-size: 1rem;
-    font-weight: bold;
-    color: #333;
-  }
-}
 
 .search {
   display: flex;
@@ -57,11 +31,17 @@
   font-size: 16px;
   flex: 0;
 }
+@media (max-width: 768px) {
+  .actions {
+    justify-content: flex-start;
+  }
+}
 
 .profile {
   display: flex;
   align-items: center;
   gap: 8px;
+  white-space: nowrap;
 }
 .profile img {
   width: 32px;
@@ -74,6 +54,34 @@
   gap: 4px;
   font-size: 14px;
   font-weight: 500;
+}
+
+.menuButton {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #333;
+  font-size: 1.8rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 40px;
+}
+
+@media (max-width: 768px) {
+  .header {
+    justify-content: flex-start;
+    gap: 24px;
+  }
+  .actions {
+    flex: 1;
+    justify-content: flex-start;
+  }
+  .menuButton {
+    margin-left: auto;
+  }
 }
 
 /*# sourceMappingURL=Header.module.css.map */
