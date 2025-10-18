@@ -1,4 +1,4 @@
-@import '../styles/_variables'
+@use '../styles/variables' as *
 
 .drawer
   width: 220px
@@ -27,12 +27,11 @@
   display: flex
   align-items: center
   justify-content: center
-  height: 60px
+  height: $shared-header-height
   background-color: $drawer-accent
   font-size: 18px
   font-weight: bold
   color: white
-  padding: 2px
 
 .menu
   list-style: none

@@ -2,7 +2,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 24px;
+  height: 60px;
+  padding: 0 24px;
   background-color: #fff;
   border-bottom: 1px solid #e5e5e5;
 }
@@ -37,11 +38,38 @@
   }
 }
 
+.icon {
+  color: #aaa;
+}
+
+.notification {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.notificationBadge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 8px;
+  height: 8px;
+  background-color: #FFC06A;
+  border-radius: 50%;
+}
+
+.divider {
+  width: 1px;
+  height: 24px;
+  background-color: #EBEBF2;
+}
+
 .profile {
   display: flex;
   align-items: center;
   gap: 8px;
   white-space: nowrap;
+  color: #aaa;
 }
 .profile img {
   width: 32px;
@@ -66,14 +94,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 40px;
-  width: 40px;
+  height: 60px;
 }
 
 @media (max-width: 768px) {
   .header {
     justify-content: flex-start;
-    gap: 24px;
   }
   .actions {
     flex: 1;

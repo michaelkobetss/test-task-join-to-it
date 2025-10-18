@@ -1,4 +1,5 @@
-@import '../styles/variables'
+@use '../styles/variables' as *
+
 .wrapper
   background: #f8f9fc
   padding: 20px
@@ -45,37 +46,31 @@
       align-items: flex-start
 
   :global(.fc-toolbar-title)
-    font-size: 16px
+    font-size: 20px
     font-weight: 500
+    color: $text-dark
 
     @media (max-width: 768px)
       font-size: 14px
 
   :global(.fc-button)
-    background: #fff
+    background: transparent
     border: 1px solid #ccc
-    color: #333
+    color: $text-light
     border-radius: 6px
     text-transform: capitalize
-    font-size: 14px
+    font-size: 16px
     padding: 4px 8px
     transition: 0.2s
 
     &:hover
-      background: #1976d2
+      background: $text-light
+      border-color: $text-light
       color: #fff
 
     @media (max-width: 768px)
       font-size: 12px
       padding: 3px 6px
 
-  :global(.fc-button-active)
-    background: #1976d2 !important
-    color: #fff !important
 
-  :global(.fc-event)
-    border: none
-    border-radius: 6px
-    padding: 2px 6px
-    font-size: 12px
-    color: #fff
+

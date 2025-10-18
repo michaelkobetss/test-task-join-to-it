@@ -1,0 +1,153 @@
+.tooltip {
+  position: absolute;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  z-index: 1050;
+  width: auto;
+  max-width: 90vw;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transform: translate(-50%, -50%);
+  transition: all 0.18s ease;
+  overflow: visible;
+}
+.tooltip.desktopPosition {
+  transform: none;
+}
+.tooltip.mobile {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+@media (max-width: 768px) {
+  .tooltip {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.closeBtn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  line-height: 1;
+  padding: 6px;
+  cursor: pointer;
+  color: #333;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.closeBtn:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.tooltipContent {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 4px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.input, .textArea {
+  border: 1px solid #aaa;
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 14px;
+  background: white;
+  color: #333;
+}
+
+.textArea {
+  resize: none;
+  height: 60px;
+}
+
+.colorPickerGroup {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.colorPicker {
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  width: 40px;
+  height: 34px;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  margin-top: 6px;
+  width: 100%;
+}
+
+.buttonDiscard {
+  background-color: #e53935;
+  color: #ffffff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  min-width: 84px;
+  text-align: center;
+}
+.buttonDiscard:hover {
+  background-color: rgb(222.7315789474, 33.0789473684, 28.6684210526);
+}
+
+.buttonEdit {
+  background: transparent;
+  color: #aaa;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  min-width: 84px;
+  text-align: center;
+}
+.buttonEdit:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.buttonSave {
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.buttonCancel {
+  background-color: #ccc;
+  color: #333;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/*# sourceMappingURL=EventTooltip.module.css.map */

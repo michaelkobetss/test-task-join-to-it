@@ -1,0 +1,139 @@
+@use '../styles/variables' as *
+
+.tooltip
+  position: absolute
+  background: white
+  border-radius: 8px
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1)
+  padding: 16px
+  z-index: 1050
+  width: auto
+  max-width: 90vw
+  display: flex
+  flex-direction: column
+  gap: 12px
+  transform: translate(-50%, -50%)
+  transition: all 0.18s ease
+  overflow: visible
+
+  &.desktopPosition
+    transform: none
+
+  &.mobile
+    left: 50%
+    top: 50%
+    transform: translate(-50%, -50%)
+
+  @media (max-width: 768px)
+    left: 50%
+    top: 50%
+    transform: translate(-50%, -50%)
+
+.closeBtn
+  position: absolute
+  top: 8px
+  right: 8px
+  background: transparent
+  border: none
+  font-size: 18px
+  line-height: 1
+  padding: 6px
+  cursor: pointer
+  color: $text-dark
+  border-radius: 6px
+  display: inline-flex
+  align-items: center
+  justify-content: center
+
+  &:hover
+    background: rgba(0,0,0,0.04)
+
+.tooltipContent
+  display: flex
+  flex-direction: column
+  gap: 12px
+  padding-top: 4px
+
+.inputGroup
+  display: flex
+  flex-direction: column
+  gap: 6px
+
+.input, .textArea
+  border: 1px solid $text-light
+  border-radius: 6px
+  padding: 8px 10px
+  font-size: 14px
+
+  background: white
+  color: $text-dark
+
+.textArea
+  resize: none
+  height: 60px
+
+.colorPickerGroup
+  display: flex
+  align-items: center
+  gap: 12px
+
+.colorPicker
+  border: none
+  padding: 4px
+  cursor: pointer
+  width: 40px
+  height: 34px
+
+.actions
+  display: flex
+  justify-content: space-between
+  gap: 12px
+  align-items: center
+  margin-top: 6px
+  width: 100%
+
+.buttonDiscard
+  background-color: #e53935
+  color: #ffffff
+  border: none
+  padding: 8px 12px
+  border-radius: 6px
+  cursor: pointer
+  font-size: 14px
+  min-width: 84px
+  text-align: center
+
+  &:hover
+    background-color: darken(#e53935, 6%)
+
+.buttonEdit
+  background: transparent
+  color: $text-light
+  border: none
+  padding: 8px 12px
+  border-radius: 6px
+  cursor: pointer
+  font-size: 14px
+  min-width: 84px
+  text-align: center
+
+  &:hover
+    background: rgba(0,0,0,0.04)
+
+.buttonSave
+  background-color: #1976d2
+  color: white
+  border: none
+  padding: 8px 12px
+  border-radius: 6px
+  cursor: pointer
+  font-size: 14px
+
+.buttonCancel
+  background-color: #ccc
+  color: $text-dark
+  border: none
+  padding: 8px 12px
+  border-radius: 6px
+  cursor: pointer
+  font-size: 14px

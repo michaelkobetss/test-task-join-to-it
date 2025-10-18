@@ -1,12 +1,13 @@
-@import '../styles/_variables'
+@use '../styles/variables' as *
 
 .header
   display: flex
   align-items: center
   justify-content: space-between
-  padding: 12px 24px
+  height: $shared-header-height
+  padding: 0 24px
   background-color: $header-bg
-  border-bottom: 1px solid #e5e5e5
+  border-bottom: 1px solid $border-light
 
 .search
   display: flex
@@ -34,11 +35,34 @@
   @media (max-width: 768px)
     justify-content: flex-start
 
+.icon
+  color: $text-light
+
+.notification
+  position: relative
+  display: flex
+  align-items: center
+
+.notificationBadge
+  position: absolute
+  top: -4px
+  right: -4px
+  width: 8px
+  height: 8px
+  background-color: $notification-badge
+  border-radius: 50%
+
+.divider
+  width: 1px
+  height: 24px
+  background-color: $divider-bg
+
 .profile
   display: flex
   align-items: center
   gap: 8px
   white-space: nowrap
+  color: $text-light
 
   img
     width: 32px
@@ -62,13 +86,11 @@
   display: flex
   align-items: center
   justify-content: center
-  height: 40px
-  width: 40px
+  height: $shared-header-height
 
 @media (max-width: 768px)
   .header
     justify-content: flex-start
-    gap: 24px
 
   .actions
     flex: 1

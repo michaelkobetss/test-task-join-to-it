@@ -54,8 +54,9 @@
   }
 }
 .container :global(.fc-toolbar-title) {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 500;
+  color: #333;
 }
 @media (max-width: 768px) {
   .container :global(.fc-toolbar-title) {
@@ -63,17 +64,18 @@
   }
 }
 .container :global(.fc-button) {
-  background: #fff;
+  background: transparent;
   border: 1px solid #ccc;
-  color: #333;
+  color: #aaa;
   border-radius: 6px;
   text-transform: capitalize;
-  font-size: 14px;
+  font-size: 16px;
   padding: 4px 8px;
   transition: 0.2s;
 }
 .container :global(.fc-button):hover {
-  background: #1976d2;
+  background: #aaa;
+  border-color: #aaa;
   color: #fff;
 }
 @media (max-width: 768px) {
@@ -81,17 +83,6 @@
     font-size: 12px;
     padding: 3px 6px;
   }
-}
-.container :global(.fc-button-active) {
-  background: #1976d2 !important;
-  color: #fff !important;
-}
-.container :global(.fc-event) {
-  border: none;
-  border-radius: 6px;
-  padding: 2px 6px;
-  font-size: 12px;
-  color: #fff;
 }
 
 /*# sourceMappingURL=Calendar.module.css.map */
